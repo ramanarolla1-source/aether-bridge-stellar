@@ -51,6 +51,8 @@ Agent Request: Calls premium API (e.g., Eons Academic Rail).
 
 402 Error: Server responds with Payment Required and Stellar payment headers.
 
+Note: AetherBridge utilizes the Stellar-MPP-SDK to manage these machine-to-machine payment flows, moving beyond human-centric dashboards for true agentic autonomy.
+
 AetherBridge Check: Verifies request against Soroban Spending Policy.
 
 Hardware Auth: Passkey/Secure Enclave signs the authorization entry.
