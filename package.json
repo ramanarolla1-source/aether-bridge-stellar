@@ -1,3 +1,4 @@
-•	x402 Integration: Seamlessly resolves "402 Payment Required" errors by authorizing USDC micropayments over HTTP. 
-•	Soroban Spending Guardrails: A smart contract policy that limits agent spending (e.g., max 5 USDC/day) and requires hardware-anchored (Passkey) approval for large transactions. 
-•	Institutional Compliance (NTL): Designed for the National Trust Layer (NTL)—a framework for regional jurisdictional rules. This allows AetherBridge to serve high-compliance sectors like Eons Academic Rail (credential verification) and international trade finance. 
+"dependencies": {
+  "@x402/fetch": "^0.1.0",
+  "@stellar/stellar-sdk": "^11.0.0"
+}
