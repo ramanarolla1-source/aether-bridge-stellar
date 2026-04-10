@@ -1,10 +1,24 @@
 # aether-bridge-stellar
-Tech Stack: Rust (Soroban), TypeScript (SDK), Python (AI Agent logic).
+# AetherBridge: Sovereign Agentic Rails
 
-The "Double-Dip" Advantage: Mention that this is an extension of the AetherUX protocol designed specifically for Stellar's Machine Payments Protocol (MPP).
+> Bridging Hardware Security with Autonomous Machine Payments on Stellar.
 
-Initial Code Commit (Soroban Contract):
-You’ll need a simple Spending Policy contract in Rust. Here is a high-level snippet of what that logic looks like:
+AetherBridge is a secure, institutional-grade payment gateway for AI agents. It eliminates the "Bankless Agent" problem by allowing autonomous software to resolve **x402 (Payment Required)** errors using **Soroban-managed Spending Policies** and hardware-anchored trust.
+
+## 🚀 The Solution: Programmable Guardrails
+AI agents often hit a "payment wall." Current solutions rely on insecure hot wallets. AetherBridge anchors agent identity in the **Secure Enclave**, ensuring agents can only spend USDC/XLM within strict, on-chain programmable guardrails.
+
+### 📜 Soroban Spending Policy
+Our Rust-based contract enforces granular control over agent spending:
+- **Daily Limits:** Prevents drained wallets from logic loops.
+- **Whitelist Integration:** Restricts payments to verified service providers.
+- **Hardware-Anchored Auth:** Leverages Soroban's native auth for Secure Enclave signatures.
+
+## 🛠 Tech Stack
+- **Soroban (Rust):** Smart contract guardrails.
+- **Stellar SDK (TypeScript):** Machine-to-machine settlement.
+- **x402 Protocol:** Standardized HTTP-to-Ledger payment flow.
+
 # AetherBridge: Sovereign Agentic Rails
 > Bridging Hardware Security with Autonomous Machine Payments on Stellar.
 
