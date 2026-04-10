@@ -15,9 +15,11 @@ Our Rust-based contract enforces granular control over agent spending:
 - **Hardware-Anchored Auth:** Leverages Soroban's native auth for Secure Enclave signatures.
 
 ## 🛠 Tech Stack
-- **Soroban (Rust):** Smart contract guardrails.
-- **Stellar SDK (TypeScript):** Machine-to-machine settlement.
-- **x402 Protocol:** Standardized HTTP-to-Ledger payment flow.
+- Soroban (Rust): Smart contract guardrails for non-custodial agent autonomy.
+
+Stellar SDK (TypeScript): Machine-to-machine settlement using the Stellar network.
+
+x402 Protocol: Standardized HTTP-to-Ledger payment flow for AI-native commerce.
 
 # AetherBridge: Sovereign Agentic Rails
 > Bridging Hardware Security with Autonomous Machine Payments on Stellar.
