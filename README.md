@@ -93,3 +93,18 @@ Hardware Auth: Passkey/Secure Enclave signs the authorization entry.
 
 Settlement: USDC settles on Stellar; Agent receives data.
 
+## 🛠️ Tech Stack: Deep Stellar Integration
+
+AetherBridge isn't just a wrapper; it is a native extension of the Stellar ecosystem:
+
+- **Soroban Native Auth Framework:** Unlike EVM-based `msg.sender` patterns, we utilize Soroban’s explicit `require_auth()` and `require_auth_for_args()`. This allows our contracts to verify that a transaction was authorized by the specific hardware-anchored identity (Passkey) without managing complex signature logic in-contract.
+- **Smart Account Guardrails:** We move beyond simple "multisig." AetherBridge implements a non-custodial **Smart Account** pattern where the agent is the primary actor, but the **Spending Policy** contract acts as an immutable guardrail. This ensures that even if an agent's logic loops, it cannot drain the treasury.
+- **Stellar Asset Contract (SAC):** Built-in support for **USDC** and **XLM** via the native asset bridge, ensuring institutional-grade settlement with sub-5 second finality.
+
+## 🤖 The Paradigm: Non-Custodial Agent Autonomy
+
+We are moving AI agents from "Read-Only" to "Transact-Ready." 
+
+In the AetherBridge model, the agent is **autonomous but not ungoverned**. By leveraging Stellar’s Protocol 23 improvements (specifically parallel execution and cleaner auth), we enable:
+1. **Passkey Verification:** Agents sign with device-bound credentials (WebAuthn/Secp256r1), eliminating seed phrases.
+2. **Policy-Based Authorization:** Authorization is data-driven. The agent identifies *who* it is, and the **Smart Account Guardrail** dictates *what* it is allowed to do based on the current context (e.g., "Pay for this API inference up to 5 USDC").
