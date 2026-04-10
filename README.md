@@ -25,6 +25,16 @@ x402 Protocol: Standardized HTTP-to-Ledger payment flow for AI-native commerce.
 > Bridging Hardware Security with Autonomous Machine Payments on Stellar.
 
 AetherBridge is a secure, institutional-grade payment gateway for AI agents. It eliminates the "Bankless Agent" problem by allowing autonomous software to resolve **x402 (Payment Required)** errors using **Soroban-managed Spending Policies** and hardware-anchored trust.
+Integration Flow
+Intercept: The agent encounters an HTTP 402 Payment Required header from a service provider.
+
+Verify: AetherBridge checks the Soroban Spending Policy to ensure the request is within the agent's budget.
+
+Sign: The Secure Enclave (Passkey) signs the transaction payload.
+
+Settle: The transaction is submitted to the Stellar Network for near-instant settlement.
+
+Resume: The agent receives the 200 OK and continues its task autonomously.
 
 ## 🚀 The Vision
 AI agents are hitting a "payment wall." Current solutions rely on insecure hot wallets. AetherBridge anchors agent identity in the **Secure Enclave** (Passkeys), ensuring agents can only spend USDC/XLM within strict, on-chain programmable guardrails. This is the foundation for the **National Trust Layer (NTL)**.
