@@ -1,3 +1,7 @@
+![AetherBridge Sovereign Agentic Rails](https://github.com/user-attachments/assets/00d514c0-b65e-48ca-9e7d-fab7bbf7af81)
+
+
+
 # AetherBridge: Sovereign Agentic Rails
 
 > **Bridging Hardware Security with Autonomous Machine Payments on Stellar.**
@@ -59,3 +63,5 @@ Resource Access: The agent retries the request with the transaction proof, recei
 
 AetherBridge is a purpose-built implementation of the AetherUX logic, optimized for the Stellar Machine Payments Protocol (MPP) and the emerging Agentic Economy.
 
+One Pager: https://docs.google.com/document/d/1NSiYEb2IdbknaQzjBLypy02216JuLw91gnA5v256ICE/edit?usp=sharing
+Demo Video: https://youtu.be/szuxz5TDkIA
