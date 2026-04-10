@@ -108,3 +108,14 @@ We are moving AI agents from "Read-Only" to "Transact-Ready."
 In the AetherBridge model, the agent is **autonomous but not ungoverned**. By leveraging Stellar’s Protocol 23 improvements (specifically parallel execution and cleaner auth), we enable:
 1. **Passkey Verification:** Agents sign with device-bound credentials (WebAuthn/Secp256r1), eliminating seed phrases.
 2. **Policy-Based Authorization:** Authorization is data-driven. The agent identifies *who* it is, and the **Smart Account Guardrail** dictates *what* it is allowed to do based on the current context (e.g., "Pay for this API inference up to 5 USDC").
+
+Machine-to-Machine (M2M) logic flow
+## 🔄 The AetherBridge M2M Flow
+
+AetherBridge operates as a seamless "Interceptor" within the agent's network stack, following the standardized **x402 (Payment Required)** lifecycle:
+
+1. **402 Challenge:** The AI agent makes an HTTP request to a service provider (e.g., an LLM API). The server responds with an `HTTP 402 Payment Required` header, specifying the amount in USDC and the destination address.
+2. **Policy Verification:** The AetherBridge SDK intercepts this 402 challenge. It queries the **Soroban Spending Policy** contract on Stellar to verify if the payment is within the agent's pre-approved "Smart Account Guardrails."
+3. **Hardware Signature:** If the policy check passes, the SDK triggers a signature from the **Secure Enclave (Passkey)**. No seed phrases are ever exposed to the agent's logic.
+4. **On-Chain Settlement:** The signed authorization is submitted to a **Stellar Facilitator**. The payment settles on the ledger in ~5 seconds with sub-cent fees.
+5. **Resource Delivery:** AetherBridge retries the original request with the transaction proof attached. The service provider validates the proof and returns the `200 OK` response.
