@@ -36,26 +36,34 @@ AI agents are hitting a "payment wall." Current solutions rely on insecure hot w
 ## 📜 Smart Contract: Spending Policy
 The following Soroban contract (Rust) enforces daily limits on agent spending, preventing drained wallets in the event of an agent logic failure.
 
+# AetherBridge: Sovereign Agentic Rails
+
+> **Bridging Hardware Security with Autonomous Machine Payments on Stellar.**
+
+AetherBridge is a secure, institutional-grade payment gateway for AI agents. It resolves the "Bankless Agent" problem by allowing autonomous software to resolve **x402 (Payment Required)** errors using **Soroban-managed Spending Policies** and hardware-anchored trust.
+
+---
+
+## 🚀 The Solution: Programmable Guardrails
+Current AI agent payment solutions rely on insecure hot wallets. AetherBridge anchors agent identity in the **Secure Enclave** (via Passkeys), ensuring agents can only spend USDC or XLM within strict, on-chain programmable guardrails.
+
+### 🛡️ Soroban Spending Policy
+Our Rust-based contract enforces granular control over agent spending, preventing logic-loop drain and unauthorized transfers.
+
 ```rust
-// Paste the Rust code I gave you here
-#![no_std]
-use soroban_sdk::{contract, contractimpl, Address, Env};
-
-#[contract]
-pub struct SpendingPolicy;
-
 #[contractimpl]
 impl SpendingPolicy {
-    pub fn check_limit(env: Env, agent: Address, amount: i128) -> bool {
-        let daily_limit: i128 = 5000000; // 5.00 USDC (6 decimals)
-        let spent_today: i128 = env.storage().instance().get(&agent).unwrap_or(0);
+    pub fn check_and_update(env: Env, agent: Address, amount: i128) {
+        agent.require_auth();
         
-        if (spent_today + amount) <= daily_limit {
-            env.storage().instance().set(&agent, &(spent_today + amount));
-            true
-        } else {
-            false
+        let limit = get_daily_limit(&env, &agent);
+        let spent = get_spent_today(&env, &agent);
+        
+        if spent + amount > limit {
+            panic!("Spending limit exceeded for today");
         }
+        
+        update_spent_today(&env, &agent, spent + amount);
     }
 }
 Agent Workflow (x402 Integration)
