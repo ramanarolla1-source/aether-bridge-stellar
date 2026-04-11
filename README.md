@@ -33,6 +33,35 @@ impl SpendingPolicy {
         update_spent_today(&env, &agent, spent + amount);
     }
 }
+Soroban Technical Specification: AetherBridge
+1. Non-Custodial Agent Authentication
+AetherBridge utilizes Soroban’s Built-in Authorization Framework (require_auth) to manage agentic transactions without centralized key storage.
+
+Mechanism: Agents utilize unique ed25519 identities generated at the edge.
+
+Security: Instead of holding keys on a server, AetherBridge leverages Soroban’s Account Abstraction capabilities, allowing smart contracts to verify agent signatures directly on-chain before executing an x402 settlement.
+
+2. Automated x402 Intercepts on Soroban
+We have implemented the x402 Payment Required logic as a native Soroban contract.
+
+Logic: When an agent requests a high-value resource, the contract "intercepts" the call, verifies the pre-signed authorization, and executes the Token Transfer in a single atomic transaction.
+
+Efficiency: This eliminates the need for multi-step "Approve/TransferFrom" patterns, reducing gas (resource) consumption on the network.
+
+3. State TTL & Persistent Rails
+To ensure AetherBridge remains "always-on" for long-running industrial cycles (like the fuel trade use case):
+
+Storage: We utilize Persistent Storage for agent reputation and ledger snapshots.
+
+Lifecycle: The contract includes an automated extend_ttl function, ensuring that the "Sovereign Rails" do not archive during periods of low activity between batch settlements.
+
+4. Autonomous Guardrails
+Every agentic action is governed by a Guardrail Contract that restricts transactions based on:
+
+Velocity Limits: Maximum spend per ledger.
+
+Destination Whitelisting: Ensuring fees are only redirected to authorized service providers.
+
 
 🛠️ Tech Stack: Deep Stellar Integration
 Soroban Native Auth Framework: Unlike generic signature checks, we utilize native require_auth() to leverage Stellar’s Protocol 23 improvements, supporting Passkeys (Secp256r1) directly at the protocol level.
