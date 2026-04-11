@@ -65,3 +65,6 @@ AetherBridge is a purpose-built implementation of the AetherUX logic, optimized 
 
 One Pager: https://docs.google.com/document/d/1NSiYEb2IdbknaQzjBLypy02216JuLw91gnA5v256ICE/edit?usp=sharing
 Demo Video: https://youtu.be/szuxz5TDkIA
+
+
+🧮 The Economic Decision Model (EDM)AetherBridge implements a deterministic logic for agentic spending. When an agent encounters an HTTP 402 (Payment Required), AetherBridge evaluates the transaction through a three-tier mathematical filter:Utility Threshold: Is the cost of the data ($C$) less than the projected value of the task ($V$)?Gas Optimization: Should the transaction be routed through a Fee Facilitator (for $0 XLM gas) based on current network congestion?Settlement Latency: AetherBridge uses Atomic Soroban Transactions to ensure that the payment and the data-key exchange happen in a single, trustless ledger entry, eliminating the "counterparty risk" usually found in M2M commerce.
