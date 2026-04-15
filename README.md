@@ -91,6 +91,8 @@ Resource Access: The agent retries the request with the transaction proof, recei
 /examples: Demo scripts showing an "Autonomous Pay-per-Inference" workflow.
 
 AetherBridge is a purpose-built implementation of the AetherUX logic, optimized for the Stellar Machine Payments Protocol (MPP) and the emerging Agentic Economy.
+How To Run
+1. Copy .env.example to .env. 2. Add your Testnet Secret Key. 3. Run npm install and npm start.
 
 One Pager: https://docs.google.com/document/d/1NSiYEb2IdbknaQzjBLypy02216JuLw91gnA5v256ICE/edit?usp=sharing
 Demo Video: https://youtu.be/szuxz5TDkIA
